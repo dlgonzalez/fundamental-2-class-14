@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Now or Always? Present Simple vs Present Continuous</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#f3f7fb;--card:#fff;--ink:#16263d;--mute:#5b6b82;--line:#d9e2ee;--s:#2563eb;--s-bg:#e3ecff;--c:#f08a00;--c-bg:#fff0d4;--ok:#16a36a;--ok-bg:#d9f5e8;--bad:#d6393f;--bad-bg:#fde3e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a2b;--card:#182740;--ink:#eef3fb;--mute:#a3b2c8;--line:#2c3f5e;--s:#7aa2ff;--s-bg:#1d3361;--c:#ffb340;--c-bg:#4a3510;--ok:#4ade9d;--ok-bg:#12432f;--bad:#ff7b80;--bad-bg:#4a1c20;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a2b;--card:#182740;--ink:#eef3fb;--mute:#a3b2c8;--line:#2c3f5e;--s:#7aa2ff;--s-bg:#1d3361;--c:#ffb340;--c-bg:#4a3510;--ok:#4ade9d;--ok-bg:#12432f;--bad:#ff7b80;--bad-bg:#4a1c20;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Fredoka",ui-rounded,"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.45}
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:2.2rem;line-height:1.1;margin:.2em 0}
+h2{font-size:1.5rem;margin:.2em 0 .4em}
+.hud{display:flex;gap:10px;justify-content:space-between;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:8px 14px;margin-bottom:14px;font-weight:600;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.hud b{color:var(--c)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.duo{grid-template-columns:1fr}}
+.t{border-radius:18px;padding:16px;border:3px solid}
+.t.s{background:var(--s-bg);border-color:var(--s)}
+.t.c{background:var(--c-bg);border-color:var(--c)}
+.t h3{margin:0 0 4px;font-size:1.3rem}
+.t.s h3{color:var(--s)}.t.c h3{color:var(--c)}
+.big{font-size:1.15rem;font-weight:600}
+.t ul{padding-left:20px;margin:6px 0}
+.ex{background:var(--card);border-radius:12px;padding:8px 12px;margin:6px 0;font-weight:500}
+.hl{font-weight:700;text-decoration:underline}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td,th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+.scroll{overflow-x:auto}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn{background:var(--s);color:#fff;border:0;border-radius:14px;padding:12px 22px;font-weight:700;font-size:1.05rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+:root[data-theme="dark"] .btn,.dk .btn{color:#0f1a2b}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line);box-shadow:none}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border:3px solid var(--line);border-radius:14px;padding:12px 16px;margin:8px 0;font-weight:500}
+.opt:hover:not(:disabled){border-color:var(--s)}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok)}
+.opt.bad{background:var(--bad-bg);border-color:var(--bad)}
+.s-btn{background:var(--s-bg);border-color:var(--s)}.c-btn{background:var(--c-bg);border-color:var(--c)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scene{font-size:4rem;text-align:center;background:var(--s-bg);border-radius:18px;padding:10px;letter-spacing:.1em}
+.q{font-size:1.35rem;font-weight:600;margin:10px 0}
+.fb{border-radius:14px;padding:10px 14px;margin-top:10px;font-weight:500}
+.fb.ok{background:var(--ok-bg)}.fb.bad{background:var(--bad-bg)}
+.bar{height:12px;background:var(--line);border-radius:8px;overflow:hidden;margin:6px 0 10px}
+.bar i{display:block;height:100%;background:var(--ok);transition:width .3s}
+.map{display:grid;gap:10px}
+.mis{display:flex;gap:14px;align-items:center;text-align:left;width:100%;background:var(--card);color:var(--ink);border:3px solid var(--line);border-radius:18px;padding:14px}
+.mis:hover{border-color:var(--c)}
+.mis .ic{font-size:2.2rem}
+.mis small{display:block;color:var(--mute);font-size:.9rem}
+.stars{margin-left:auto;font-size:1.3rem;white-space:nowrap}
+.hint{color:var(--mute);font-size:.95rem}
+.center{text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.chat{background:var(--s-bg);border-radius:14px;padding:10px 14px;margin:8px 0;font-weight:500}.slot{min-height:52px;border:3px dashed var(--line);border-radius:14px;padding:10px;margin:8px 0;font-weight:600}.inp{width:100%;font:inherit;padding:12px 14px;border:3px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}.opt.wb{display:inline-block;width:auto;margin:4px}
+.sel{font:inherit;padding:2px 6px;border:2px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+<div class="hud" id="hud" hidden><span>⭐ <b id="pts">0</b> pts</span><span>🔥 Streak <b id="stk">0</b></span><button class="btn ghost" style="padding:4px 12px;box-shadow:none" onclick="show('map')">Missions</button></div>
+<div id="app"></div>
+</main>
+<script>
+const MIS=[
+{id:"life",ic:"🧑",name:"My Life",d:"Affirmative and negative sentences about you.",items:[
+{q:"I usually ___ breakfast at home, but today I ___ breakfast at a café.",o:["have / am having","am having / have"],a:0,w:"Usually = routine; today = temporary."},
+{k:"f",q:"My brother ___ (not like) spicy food.",t:["doesn’t like","does not like"],w:"Habit or opinion, negative → doesn’t + verb."},
+{q:"I’m studying hard this month, but my brother never ___ .",o:["studies","is studying"],a:0,w:"“Never” → Present Simple."},
+{k:"f",q:"We ___ (not watch) TV at the moment. We’re playing cards.",t:["aren’t watching","are not watching"],w:"Now, negative → aren’t + -ing."},
+{q:"What time ___ you usually get up?",o:["do","are"],a:0,w:"Usually → Do you…?"},
+{k:"s",q:"My cousin works in Bogotá.",a:0,w:"Permanent situation → Simple."},
+{q:"Be quiet! The baby ___ .",o:["sleeps","is sleeping"],a:1,w:"Be quiet! = now → Continuous."},
+{k:"f",q:"Look! He ___ (wear) my jacket!",t:["is wearing","’s wearing"],w:"“Look!” → is + -ing."},
+{q:"I ___ the answer. It’s B.",o:["know","am knowing"],a:0,w:"know = stative verb → no -ing."},
+{k:"f",q:"My parents ___ (not live) in Cali. They live in Palmira.",t:["don’t live","do not live"],w:"Where you live (fact), negative → don’t + verb."}]},
+{id:"tech",ic:"💻",name:"Tech Trouble",d:"Problems, questions and help-desk calls.",items:[
+{q:"Complete the call.",ctx:"<b>Help desk:</b> What’s the problem?<br><b>You:</b> ___",o:["My laptop doesn’t turn on right now.","My laptop isn’t turning on."],a:1,w:"A problem happening now → isn’t + -ing."},
+{q:"Complete the call.",ctx:"<b>Help desk:</b> Is your Wi-Fi OK?<br><b>You:</b> No. It ___ every evening.",o:["disconnects","is disconnecting"],a:0,w:"“Every evening” = pattern → Simple."},
+{k:"f",q:"Wait! The screen ___ (go) black!",t:["is going","’s going"],w:"“Wait!” → Continuous."},
+{k:"o",q:"Build the question.",ws:["What","are","you","downloading?"],a:"What are you downloading?",w:"Wh- + are + subject + -ing."},
+{k:"o",q:"Build the question.",ws:["Do","you","use","a","password","manager?"],a:"Do you use a password manager?",w:"Do + subject + base verb."},
+{k:"f",q:"She ___ (not use) her old laptop. It’s too slow.",t:["doesn’t use","does not use"],w:"Habit, negative → doesn’t + verb."},
+{q:"How often ___ you update your phone?",o:["do","are"],a:0,w:"“How often” → Do you…?"},
+{q:"Complete the call.",ctx:"<b>Tech:</b> What are you trying to do?<br><b>You:</b> I ___ to send an email, but it won’t send.",o:["try","am trying"],a:1,w:"The action is in progress → Continuous."},
+{k:"s",q:"My phone is freezing again.",a:1,w:"Happening now."},
+{k:"s",q:"My computer updates every Friday.",a:0,w:"Routine."}]},
+{id:"pic",ic:"🖼️",name:"Picture Detective",d:"Describe the pictures and ask about them.",items:[
+{s:"👨‍🍳🍳",q:"What is he doing?",o:["He cooks dinner.","He is cooking dinner."],a:1,w:"A picture shows NOW → Continuous."},
+{s:"🌧️☂️",q:"Why are the people carrying umbrellas?",o:["It rains.","It’s raining."],a:1,w:"Weather you can see → Continuous."},
+{s:"📅🌙📖",q:"Every night, what does he do?",o:["He studies.","He is studying."],a:0,w:"The calendar shows a routine → Simple."},
+{s:"👩‍💻☕🎧",k:"o",q:"Describe the picture.",ws:["She","is","wearing","headphones."],a:"She is wearing headphones.",w:"Subject + is + -ing."},
+{s:"🚌🕗🏫",q:"The kids ___ the bus to school every day.",o:["take","are taking"],a:0,w:"“Every day” → Simple."},
+{s:"🧒🛝🌞",k:"f",q:"The children ___ (not play) inside. They’re at the park.",t:["aren’t playing","are not playing"],w:"Now, negative → aren’t + -ing."},
+{s:"🍕👨‍👩‍👧",q:"Choose the best question about the picture.",o:["What are they eating?","What do they eat?"],a:0,w:"Asking about the picture now → are + -ing."},
+{s:"🏋️‍♂️🕕",k:"f",q:"He ___ (not eat) breakfast before the gym. It’s his routine.",t:["doesn’t eat","does not eat"],w:"Routine, negative → doesn’t + verb."}]},
+{id:"ask",ic:"❓",name:"Question Time",d:"Yes/no questions and wh- questions.",items:[
+{q:"___ she work on Saturdays?",o:["Does","Is"],a:0,w:"Routine → Does she…?"},
+{q:"___ they waiting for us?",o:["Do","Are"],a:1,w:"Now → Are they…?"},
+{k:"o",q:"Build the question.",ws:["What","are","you","doing","now?"],a:"What are you doing now?",w:"Wh- + are + subject + -ing."},
+{k:"o",q:"Build the question.",ws:["Where","does","your","brother","work?"],a:"Where does your brother work?",w:"Wh- + does + subject + base verb."},
+{q:"Why ___ you laughing?",o:["do","are"],a:1,w:"Now → Why are you laughing?"},
+{k:"f",q:"Who ___ (talk) to you on the phone right now?",t:["is talking","’s talking"],w:"Right now → is + -ing."},
+{q:"How often ___ you check your phone?",o:["do","are"],a:0,w:"“How often” → Simple."},
+{k:"f",q:"___ he ___ (study) now? Write: Is he…",t:["is he studying"],w:"Is + subject + -ing?"},
+{q:"Which sentence is correct?",o:["Do you wanting coffee?","Do you want coffee?"],a:1,w:"want = stative → no -ing."}]},
+{id:"chat",ic:"💬",name:"Chat Room",d:"Complete real conversations.",items:[
+{q:"Complete the chat.",ctx:"<b>Ana:</b> Hi! What are you doing?<br><b>Leo:</b> ___",o:["I watch a series.","I’m watching a series."],a:1,w:"“What are you doing?” → now → Continuous."},
+{q:"Complete the chat.",ctx:"<b>Ana:</b> What do you do?<br><b>Leo:</b> ___",o:["I work in a hospital.","I’m working in a hospital."],a:0,w:"“What do you do?” asks about your job."},
+{k:"f",q:"Complete the chat.",ctx:"<b>Mom:</b> Why aren’t you studying?<br><b>Sam:</b> But I ___ (study)! I’m reading my notes.",t:["am studying","’m studying"],w:"Now → am + -ing."},
+{q:"Complete the chat.",ctx:"<b>Tom:</b> Do you like sushi?<br><b>Eva:</b> No, I ___ . I prefer pizza.",o:["don’t","am not"],a:0,w:"Short answer: No, I don’t."},
+{q:"Complete the chat.",ctx:"<b>Tom:</b> Are you coming to the party?<br><b>Eva:</b> Yes, I ___ .",o:["am","do"],a:0,w:"Short answer: Yes, I am."},
+{k:"f",q:"Complete the chat.",ctx:"<b>Mia:</b> Does your brother play the guitar?<br><b>Dan:</b> No, he ___ . He plays the piano.",t:["doesn’t","does not"],w:"Short answer: No, he doesn’t."},
+{q:"Complete the chat.",ctx:"<b>Mia:</b> Where’s Dan?<br><b>Eva:</b> He ___ lunch in the kitchen.",o:["has","is having"],a:1,w:"have lunch = an action → Continuous."},
+{k:"f",q:"Complete the chat.",ctx:"<b>Ben:</b> Is it raining?<br><b>Ana:</b> No, it ___ . It usually rains in the evening.",t:["isn’t","is not"],w:"Short answer: No, it isn’t."}]},
+{id:"fast",ic:"⚡",name:"Now or Always?",d:"Quick-fire sorting, with tricky verbs.",items:[
+{k:"s",q:"She usually takes the bus.",a:0,w:"Usually → habit."},
+{k:"s",q:"Listen! Someone is knocking.",a:1,w:"“Listen!” → now."},
+{k:"s",q:"I want a coffee right now.",a:0,w:"want = stative → Simple, even now!"},
+{k:"s",q:"He’s studying for his exam this week.",a:1,w:"Temporary → Continuous."},
+{k:"s",q:"My dad doesn’t eat fish.",a:0,w:"Habit, negative → Simple."},
+{k:"s",q:"They aren’t answering their phones.",a:1,w:"Now, negative → Continuous."},
+{k:"s",q:"Do you know her name?",a:0,w:"know = stative → Simple."},
+{k:"s",q:"Is it snowing?",a:1,w:"Question about now → Continuous."}]},
+{id:"talk",ic:"🗣️",name:"Speak Up",keep:1,d:"Real speaking challenges with a partner.",items:[
+{k:"p",q:"Interview your partner: ask 3 questions with Do or Does."},
+{k:"p",q:"Ask 3 wh- questions about their routine: What time…? Where…? How often…?"},
+{k:"p",q:"Say 3 negative sentences about your life: “I don’t…”, “My family doesn’t…”"},
+{k:"p",q:"Look around the room. Say 3 things people are NOT doing: “Marta isn’t…”"},
+{k:"p",q:"Role-play a help-desk call. A: “My … isn’t …ing.” B: “What are you doing? Does it…?”"},
+{k:"p",q:"Phone call. A: “What are you doing?” B answers and says what you usually do at this time."},
+{k:"p",q:"Mime an action. Your partner asks: “Are you…?” Answer: “Yes, I am.” / “No, I’m not.”"},
+{k:"p",q:"Say one thing you usually do, and one thing you’re doing differently today."}]}
+];
+const D1="<b>Maya:</b> Hi Carlos! Where are you? It’s late.<br><b>Carlos:</b> I’m at the library. I’m studying for my exam.<br><b>Maya:</b> Again? You always study on Fridays!<br><b>Carlos:</b> I know. My friends usually go out, but I’m not going out tonight.<br><b>Maya:</b> What are you reading now?<br><b>Carlos:</b> A book about history. I don’t understand it, so I’m taking notes.<br><b>Maya:</b> I’m making pizza. Do you want some?<br><b>Carlos:</b> Yes, please! I’m coming home now.";
+const EX={
+life:[
+{k:"t",q:"True or False: “She doesn’t drinks coffee” is correct.",a:1,w:"After doesn’t → base verb: She doesn’t drink coffee."},
+{q:"Choose the correct sentence.",o:["My mom is cooking dinner now.","My mom cooks dinner now."],a:0,w:"“Now” → is + -ing."},
+{k:"o",q:"Build a negative sentence.",ws:["I","don’t","work","on","Sundays."],a:"I don’t work on Sundays.",w:"don’t + base verb."},
+{k:"f",q:"Right now my friends ___ (play) video games.",t:["are playing"],w:"Right now → are + -ing."},
+{k:"f",q:"My sister ___ (not eat) meat. She’s vegetarian.",t:["doesn’t eat","does not eat"],w:"Habit, negative → doesn’t + verb."}],
+tech:[
+{q:"Which sentence has a MISTAKE?",o:["My phone is ringing.","My phone ring every morning.","It doesn’t work."],a:1,w:"It rings every morning (he/she/it + s)."},
+{k:"t",q:"True or False: “The Wi-Fi isn’t working” talks about a problem right now.",a:0,w:"isn’t working = now."},
+{k:"o",q:"Build the sentence.",ws:["My","phone","doesn’t","charge","at","night."],a:"My phone doesn’t charge at night.",w:"Subject + doesn’t + base verb."},
+{k:"f",q:"I can’t talk now. I ___ (update) my computer.",t:["am updating","’m updating"],w:"Now → am + -ing."}],
+pic:[
+{s:"👩‍🍳🍝",k:"t",q:"True or False: “She is cooking pasta” is correct for this picture.",a:0,w:"A picture shows now → is cooking."},
+{s:"🚴‍♂️💨🏁",q:"Choose the best sentence.",o:["He is riding a bike fast.","He rides a bike fast."],a:0,w:"The action is happening in the picture."},
+{s:"👨‍⚕️🏥",q:"This is a doctor. What does he do?",o:["He works in a hospital.","He is working in a hospital."],a:0,w:"“What does he do?” = his job."},
+{s:"📱😴🔋",k:"f",q:"The phone ___ (not work). The battery is dead.",t:["isn’t working","is not working"],w:"Problem now → isn’t + -ing."},
+{s:"🧑‍🏫📚🕗",k:"o",q:"Describe the routine.",ws:["He","teaches","English","at","8:00."],a:"He teaches English at 8:00.",w:"Routine → Present Simple."}],
+ask:[
+{k:"o",q:"Build the question.",ws:["How","often","does","she","go","jogging?"],a:"How often does she go jogging?",w:"How often + does + subject + verb."},
+{k:"f",q:"___ they playing football now? (Yes, they are.)",t:["are"],w:"Now → Are they playing…?"},
+{k:"f",q:"What time ___ your class start? (At 7:00.)",t:["does"],w:"Schedule → does + base verb."},
+{q:"Choose the correct answer to “Is she sleeping?”",o:["Yes, she is.","Yes, she does."],a:0,w:"Is…? → Yes, she is."},
+{q:"Which question has a MISTAKE?",o:["Where does he lives?","Where does he live?","Where is he living?"],a:0,w:"After does → base verb: live."}],
+chat:[
+{k:"d",q:"Complete the whole phone call.",ctx:"<b>Ana:</b> Hey Sam! What {0} you doing?<br><b>Sam:</b> I {1} my room. My mom is angry!<br><b>Ana:</b> Haha! {2} you clean it every week?<br><b>Sam:</b> No, I {3}. Only when she asks.<br><b>Ana:</b> My brother {4} his room every day.<br><b>Sam:</b> Really? Where {5} he live?<br><b>Ana:</b> With us! But this month he {6} at his friend’s house.",b:[["are","do"],["am cleaning","clean"],["Do","Are"],["don’t","am not"],["cleans","is cleaning"],["does","is"],["is staying","stays"]],w:"Every week / every day = Simple. Right now / this month = Continuous."},
+{k:"d",q:"Complete the help-desk call.",ctx:"<b>Agent:</b> Hello, tech support. How {0} I help you?<br><b>You:</b> My internet {1} working and I {2} to send a report.<br><b>Agent:</b> {3} you use Wi-Fi or a cable?<br><b>You:</b> Wi-Fi. It usually {4} fine, but today it’s very slow.<br><b>Agent:</b> {5} the router lights blinking?<br><b>You:</b> Yes, they are. One light is red.",b:[["can","am"],["isn’t","doesn’t"],["am trying","try"],["Do","Are"],["works","is working"],["Are","Do"]],w:"Check the time words: usually (Simple), today / now (Continuous)."}],
+fast:[
+{k:"s",q:"I’m not working today.",a:1,w:"Today → Continuous."},
+{k:"s",q:"Water freezes at 0°C.",a:0,w:"Fact → Simple."},
+{k:"s",q:"Why are you crying?",a:1,w:"Now → Continuous."},
+{k:"s",q:"He doesn’t have a car.",a:0,w:"have (own) = stative → Simple."},
+{k:"s",q:"We’re leaving now!",a:1,w:"“Now” → Continuous."},
+{k:"s",q:"I don’t like this song.",a:0,w:"like = stative → Simple."}],
+talk:[
+{k:"p",q:"Tell a short story: what you usually do on weekends, and what you’re doing this weekend."},
+{k:"p",q:"Role-play a restaurant. A is the waiter: “Are you ready to order?” B orders and asks 2 questions."},
+{k:"p",q:"Describe a photo on your phone for 30 seconds. Your partner asks 2 questions."}]};
+MIS.find(m=>m.id=="chat").items=[
+{k:"d",q:"Complete the whole conversation.",ctx:"<b>Ana:</b> Hi Leo! What {0} you doing?<br><b>Leo:</b> I {1} for the bus. It’s late again!<br><b>Ana:</b> Oh no! {2} you take the bus every day?<br><b>Leo:</b> Yes, I {3}. My car is at the mechanic this week.<br><b>Ana:</b> Poor you! Hey, we {4} a party on Saturday. Do you want to come?",b:[["are","do"],["am waiting","wait"],["Do","Are"],["do","am"],["are having","have"]],w:"Now / this week = Continuous. Every day = Simple."},
+{k:"d",q:"Complete the conversation with your new neighbor.",ctx:"<b>Rosa:</b> Hello! Are you the new neighbor?<br><b>Tom:</b> Yes, I am. I’m Tom. I {0} in the apartment next door.<br><b>Rosa:</b> Welcome! What {1} you do, Tom?<br><b>Tom:</b> I’m a designer. I {2} at home on Mondays and Fridays.<br><b>Rosa:</b> Nice! Right now my husband {3} the stairs. Sorry for the noise!<br><b>Tom:</b> No problem. I {4} to music anyway.",b:[["live","am living"],["do","are"],["work","am working"],["is cleaning","cleans"],["am listening","listen"]],w:"Jobs and routines = Simple. “Right now” = Continuous."},
+{k:"d",q:"Complete the family call.",ctx:"<b>Grandma:</b> Hello dear! What {0} the kids doing?<br><b>Mom:</b> Sofia {1} her homework and Pablo is playing outside.<br><b>Grandma:</b> Good! Sofia always {2} her homework before dinner, right?<br><b>Mom:</b> Yes, she does. And Pablo never {3} it before dinner!<br><b>Grandma:</b> Haha! {4} he want to come to my house this weekend?",b:[["are","do"],["is doing","does"],["does","is doing"],["does","is doing"],["Does","Is"]],w:"always / never = Simple. Now = Continuous. want = stative."},
+{k:"d",q:"Complete the restaurant conversation.",ctx:"<b>Waiter:</b> Good evening! {0} you ready to order?<br><b>Client:</b> Yes. I {1} the chicken, please.<br><b>Waiter:</b> And your friend? What does she {2}?<br><b>Client:</b> She {3} meat, so she wants the salad.<br><b>Waiter:</b> Perfect. {4} you want something to drink?<br><b>Client:</b> Two lemonades, please. We’re very thirsty!",b:[["Are","Do"],["want","am wanting"],["want","wants"],["doesn’t eat","isn’t eating"],["Do","Are"]],w:"want = stative (no -ing). Diet = Simple. “Are you ready?” = now."},
+{k:"d",q:"Complete the group chat.",ctx:"<b>Mia:</b> Where are you guys? The class {0} at 6:00 and it’s 5:55!<br><b>Eli:</b> We {1} in the elevator. It isn’t working!<br><b>Mia:</b> What? Why {2} you using the stairs?<br><b>Eli:</b> We {3} to, but we’re on the 20th floor!<br><b>Mia:</b> Haha. The teacher usually {4} late, so don’t worry.<br><b>Eli:</b> Great! We’re going up the stairs now!",b:[["starts","is starting"],["are waiting","wait"],["aren’t","don’t"],["are trying","try"],["arrives","is arriving"]],w:"Schedules and “usually” = Simple. Problems now = Continuous."},
+{k:"d",q:"Complete the job interview.",ctx:"<b>Boss:</b> So, Carla, what {0} you do in your free time?<br><b>Carla:</b> I {1} soccer on weekends and I read a lot.<br><b>Boss:</b> Great. And what {2} you reading at the moment?<br><b>Carla:</b> A novel about space. I {3} it very much!<br><b>Boss:</b> Do you speak other languages?<br><b>Carla:</b> Yes, I {4} Spanish and English, and I’m learning French this year.",b:[["do","are"],["play","am playing"],["are","do"],["like","am liking"],["speak","am speaking"]],w:"Free time / languages = Simple. “At the moment” and “this year” = Continuous. like = stative."}];
+MIS.forEach(m=>m.items=m.items.concat(EX[m.id]||[]));
+MIS.splice(5,0,
+{id:"fact",ic:"✅",name:"Fact Check",d:"Read the call, evaluate the information, find mistakes.",items:[
+{k:"t",q:"Carlos is at home.",ctx:D1,a:1,w:"He’s at the library."},
+{k:"t",q:"Carlos studies on Fridays.",ctx:D1,a:0,w:"Maya says: “You always study on Fridays!”"},
+{k:"t",q:"Carlos is going out tonight.",ctx:D1,a:1,w:"“I’m not going out tonight.”"},
+{k:"t",q:"Carlos understands the book.",ctx:D1,a:1,w:"“I don’t understand it.”"},
+{k:"t",q:"Maya is cooking.",ctx:D1,a:0,w:"“I’m making pizza.”"},
+{q:"Why is Carlos taking notes?",ctx:D1,o:["He doesn’t understand the book.","He is writing to Maya."],a:0,w:"He says: “I don’t understand it, so I’m taking notes.”"},
+{q:"What do Carlos’s friends usually do on Fridays?",ctx:D1,o:["They go out.","They study."],a:0,w:"“My friends usually go out.”"},
+{q:"Which sentence has a MISTAKE?",o:["She doesn’t like coffee.","He is watching TV every day.","They are playing now."],a:1,w:"Every day → He watches TV every day."},
+{q:"Which sentence has a MISTAKE?",o:["I’m knowing the answer.","I know the answer.","I don’t know."],a:0,w:"know = stative → I know."},
+{q:"Which sentence has a MISTAKE?",o:["Does she works here?","Is she working here today?","She doesn’t work here."],a:0,w:"Does she work here?"},
+{q:"Which sentence has a MISTAKE?",o:["We aren’t eating now.","They doesn’t play tennis.","I’m not sleeping."],a:1,w:"They don’t play tennis."},
+{q:"Which question has a MISTAKE?",o:["What do you doing?","What are you doing?","What do you do?"],a:0,w:"What are you doing?"},
+{q:"Which sentence has a MISTAKE?",o:["He’s having a shower now.","He has a shower every morning.","He is have breakfast."],a:2,w:"He is having breakfast."}]},
+{id:"lab",ic:"🧪",name:"Question Lab",d:"Create the right question for each answer.",items:[
+{q:"Answer: “I’m listening to music.” Which question?",o:["What are you doing?","What do you do?"],a:0,w:"The answer is about now."},
+{q:"Answer: “I’m a teacher.” Which question?",o:["What do you do?","What are you doing?"],a:0,w:"A job → What do you do?"},
+{q:"Answer: “Twice a week.” Which question?",o:["How often do you swim?","How often are you swimming?"],a:0,w:"Frequency → Simple."},
+{k:"o",q:"Build the question.",ws:["Why","is","he","wearing","a","coat?"],a:"Why is he wearing a coat?",w:"Wh- + is + subject + -ing."},
+{k:"o",q:"Build the question.",ws:["Does","your","mother","speak","English?"],a:"Does your mother speak English?",w:"Does + subject + base verb."},
+{k:"o",q:"Build the question.",ws:["Where","do","they","usually","eat","lunch?"],a:"Where do they usually eat lunch?",w:"Wh- + do + subject + verb."},
+{k:"f",q:"___ you listening? (Answer: Yes, I am.)",t:["are"],w:"Yes, I am → Are you…?"},
+{k:"f",q:"What time ___ the class start? (Answer: At 7.)",t:["does"],w:"Schedule → does."},
+{k:"f",q:"Who ___ you talking to? (Answer: My boss.)",t:["are"],w:"Now → are you talking."},
+{q:"Which question asks about right now?",o:["What are you eating?","What do you eat?"],a:0,w:"“Now” → are + -ing."}]});
+MIS.splice(5,0,{id:"say",ic:"💭",name:"What Would You Say?",d:"Continue the conversation. Choose the best line each time.",items:[
+{k:"r",q:"You call tech support. Continue the conversation.",who:"Help desk",n:["Hello, tech support. What’s the problem?","I see. Are you using Wi-Fi right now?","OK. Does it usually work well?","Let’s restart the router. I’m sending you the steps now."],b:[["My laptop isn’t connecting to the internet.","My laptop doesn’t connect right now."],["Yes, I am. I’m using the Wi-Fi.","Yes, I do."],["Yes, it does. It usually works fine.","Yes, it is. It usually works fine."]],x:["A problem now → isn’t + -ing.","Are you…? → Yes, I am.","Does it…? → Yes, it does."],w:"Match the question: Are…? → am/is/are. Do…? → do/does."},
+{k:"r",q:"You are at a café. Continue the conversation.",who:"Waiter",n:["Hi! Are you ready to order?","Great choice. Do you want anything to drink?","Sure. Why are you looking at the menu again?","Of course. I’ll be right back!"],b:[["Yes, I am. I want a pizza, please.","Yes, I do. I’m wanting a pizza, please."],["Yes, a lemonade, please.","Yes, I’m wanting a lemonade, please."],["Because I’m not sure about dessert.","Because I don’t sure about dessert."]],x:["Are you ready? → Yes, I am. And want has no -ing.","want is stative → no -ing.","Because I’m not sure = state now (be + not)."],w:"Answer with the same auxiliary as the question."},
+{k:"r",q:"A friend calls you. Continue the conversation.",who:"Dan",n:["Hey! What are you doing?","Cool. Do you do that every Saturday?","Nice! Is your sister helping you?","OK, I’m coming over in ten minutes!"],b:[["I’m cleaning the kitchen.","I clean the kitchen now."],["Yes, I do. It’s my routine.","Yes, I am. It’s my routine."],["No, she isn’t. She’s at work.","No, she doesn’t. She’s at work."]],x:["What are you doing? → I’m + -ing.","Do you…? → Yes, I do.","Is she…? → No, she isn’t."],w:"Questions with do/does or am/is/are get matching short answers."},
+{k:"r",q:"You meet a new classmate. Continue the conversation.",who:"Lucy",n:["Hi, I’m Lucy. I’m new here. What do you do?","Interesting! Is it difficult?","Are you taking any courses this month?","Great! See you in class!"],b:[["I’m a nurse. I work in a hospital.","I’m working nurse in a hospital."],["Sometimes, but I like it.","Sometimes, but I’m liking it."],["Yes, I’m taking an English course.","Yes, I take an English course now."]],x:["What do you do? = your job.","like is stative → no -ing.","“This month” → I’m taking."],w:"Job = Simple. Temporary plans = Continuous."},
+{k:"r",q:"Your mom calls. Continue the conversation.",who:"Mom",n:["Hi sweetie! Where are you? Dinner’s ready.","Why aren’t you answering my calls?","Do you want me to pick you up?","OK, see you soon!"],b:[["I’m on the bus. I’m coming home.","I’m on the bus. I come home."],["My phone isn’t working. The battery is dead.","My phone doesn’t working. The battery dead."],["No, thanks. The bus stops near our house.","No, thanks. The bus is stopping near our house every day."]],x:["Now → I’m coming.","Problem now → isn’t working.","A fact about the bus → Simple."],w:"Now = Continuous. Facts and routines = Simple."},
+{ctx:"<b>Friend:</b> Why are you wearing a coat?",q:"What would you say?",o:["Because it’s cold today.","Yes, I am."],a:0,w:"A why-question needs a “Because…” answer."},
+{ctx:"<b>Friend:</b> What do you usually do on Sundays?",q:"What would you say?",o:["I usually visit my grandparents.","I’m visiting my grandparents now."],a:0,w:"“Usually” → Simple."},
+{ctx:"<b>Friend:</b> Are you busy right now?",q:"What would you say?",o:["Yes, I’m finishing my homework.","Yes, I finish my homework."],a:0,w:"“Right now” → I’m + -ing."}]});
+const S={pts:0,stk:0,stars:{},best:0};
+const $=id=>document.getElementById(id);
+const sh=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+function hud(){$("hud").hidden=false;$("pts").textContent=S.pts;$("stk").textContent=S.stk}
+function show(v,x){window.scrollTo(0,0);({theory:theory,map:map,done:done})[v](x)}
+
+function theory(){ $("hud").hidden=true; $("app").innerHTML=`
+<div class="center"><div style="font-size:3rem">⏳🔄</div><h1>Now or Always?</h1><p class="hint">Present Simple vs Present Continuous · A1+ to A2</p></div>
+<div class="card"><h2>Step 1 · Learn the difference</h2>
+<div class="duo">
+<div class="t s"><h3>Present Simple</h3><p class="big">🔄 Always · habits · facts</p>
+<div class="ex">I <span class="hl">work</span> every day.</div>
+<div class="ex">She <span class="hl">lives</span> in Cali.</div>
+<div class="ex">Water <span class="hl">boils</span> at 100°C.</div>
+<p class="hint">Words: always, usually, often, sometimes, never, every day, on Mondays</p></div>
+<div class="t c"><h3>Present Continuous</h3><p class="big">📍 Now · happening · temporary</p>
+<div class="ex">I <span class="hl">am working</span> now.</div>
+<div class="ex">She <span class="hl">is talking</span> on the phone.</div>
+<div class="ex">It <span class="hl">is raining</span>. Look!</div>
+<p class="hint">Words: now, right now, at the moment, today, Look!, Listen!, Wait!</p></div></div></div>
+<div class="card"><h2>Step 2 · Make the sentences</h2><div class="scroll"><table>
+<tr><th></th><th style="color:var(--s)">Present Simple</th><th style="color:var(--c)">Present Continuous</th></tr>
+<tr><td>＋</td><td>I/you/we/they <b>play</b><br>he/she/it <b>plays</b></td><td>I <b>am</b> playing<br>he/she/it <b>is</b> playing<br>you/we/they <b>are</b> playing</td></tr>
+<tr><td>－</td><td>I <b>don’t</b> play<br>she <b>doesn’t</b> play</td><td>I’m <b>not</b> playing<br>she <b>isn’t</b> playing<br>they <b>aren’t</b> playing</td></tr>
+<tr><td>？</td><td><b>Do</b> you play?<br><b>Does</b> she play?</td><td><b>Am</b> I playing?<br><b>Is</b> she playing?<br><b>Are</b> they playing?</td></tr></table></div>
+<p class="hint">Spelling: he play<b>s</b> · she watch<b>es</b> · he stud<b>ies</b> · run → run<b>ning</b> · make → mak<b>ing</b></p></div>
+<div class="card"><h2>Step 3 · Ask questions</h2><div class="scroll"><table>
+<tr><th style="color:var(--s)">Present Simple</th><th style="color:var(--c)">Present Continuous</th></tr>
+<tr><td>What <b>do</b> you do?</td><td>What <b>are</b> you doing?</td></tr>
+<tr><td>Where <b>does</b> she work?</td><td>Where <b>is</b> she working today?</td></tr>
+<tr><td>How often <b>do</b> they study?</td><td>Why <b>are</b> they laughing?</td></tr>
+<tr><td>Yes, I <b>do</b>. / No, he <b>doesn’t</b>.</td><td>Yes, I <b>am</b>. / No, it <b>isn’t</b>.</td></tr></table></div></div>
+<div class="card"><h2>Step 4 · Quick tricks</h2>
+<div class="ex">❓ Does it happen <b>again and again</b>? → Present Simple</div>
+<div class="ex">❓ Can you <b>see or hear it now</b>? → Present Continuous</div>
+<div class="ex">⚠️ Some verbs don’t use -ing: <b>like, love, want, need, know</b>. Say “I <b>want</b> water”, not “I’m wanting”.</div></div>
+<div class="center"><button class="btn" onclick="show('map')">Start the game 🎮</button></div>`}
+
+function stars(id){const n=S.stars[id];return n==null?"":"★".repeat(n)+"☆".repeat(3-n)}
+function map(){ hud(); const all=MIS.every(m=>S.stars[m.id]!=null);
+$("app").innerHTML=`<h1>Choose a mission</h1><p class="hint">Earn 10 points for each correct answer. Build a streak for bonus points!</p>
+<div class="map">${MIS.map(m=>`<button class="mis" onclick="play('${m.id}')"><span class="ic">${m.ic}</span><span><b>${m.name}</b><small>${m.d}</small></span><span class="stars">${stars(m.id)}</span></button>`).join("")}</div>
+<div class="center" style="margin-top:14px">${all?`<button class="btn" onclick="show('done')">See my badge 🏆</button> `:""}<button class="btn ghost" onclick="show('theory')">📖 Review the theory</button></div>`}
+
+const nz=s=>s.toLowerCase().replace(/[’‘`]/g,"'").replace(/\s+/g," ").trim();
+let M,I,ok,items,sel,ch,cw;
+function play(id){M=MIS.find(m=>m.id==id);I=0;ok=0;items=M.keep?M.items:sh(M.items).map(it=>({...it,ord:it.o?sh(it.o.map((t,i)=>[t,i])):it.ws?sh(it.ws):null}));step()}
+function step(){hud();const it=items[I],k=it.k||"c",p=Math.round(I/items.length*100);sel=[];ch=0;cw=0;
+let h=`<div class="card"><b>${M.ic} ${M.name}</b> · ${I+1}/${items.length}<div class="bar"><i style="width:${p}%"></i></div>`;
+if(it.s)h+=`<div class="scene">${it.s}</div>`;
+if(it.ctx)h+=`<div class="chat">${it.ctx}</div>`;
+if(k=="p")h+=`<div class="q">${it.q}</div><p class="hint">Do it out loud with a partner. Be honest!</p><button class="btn" onclick="spk()">I did it! +15</button> <button class="btn ghost" onclick="nxt()">Skip</button></div>`;
+else if(k=="s"||k=="t")h+=`<div class="q">“${it.q}”</div><div class="split"><button class="opt s-btn" onclick="ans(0,this)">${k=="t"?"✅ True":"🔄 Always<br><small>Present Simple</small>"}</button><button class="opt c-btn" onclick="ans(1,this)">${k=="t"?"❌ False":"📍 Now<br><small>Present Continuous</small>"}</button></div><div id="fb"></div></div>`;
+else if(k=="r")h+=`<div class="q">${it.q}</div><div class="chat" id="tr"></div><div id="ro"></div><div id="fb"></div></div>`;
+else if(k=="d")h+=`<div class="q">${it.q}</div><div class="chat">${it.ctx.replace(/\{(\d)\}/g,(m,n)=>`<select class="sel" id="d${n}"><option value="">…</option>${sh(it.b[n].map((t,i)=>[t,i])).map(([t,i])=>`<option value="${i}">${t}</option>`).join("")}</select>`)}</div><p><button class="btn" id="ck" onclick="chk()">Check</button></p><div id="fb"></div></div>`;
+else if(k=="f")h+=`<div class="q">${it.q}</div><input id="in" class="inp" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type your answer" onkeydown="if(event.key=='Enter')chk()"><p><button class="btn" id="ck" onclick="chk()">Check</button></p><div id="fb"></div></div>`;
+else if(k=="o")h+=`<div class="q">${it.q} <span class="hint">Tap the words in order.</span></div><div class="slot" id="slot"></div>${it.ord.map((t,j)=>`<button class="opt wb" onclick="pick(${j},this)">${t}</button>`).join("")}<p><button class="btn" id="ck" onclick="chk()">Check</button> <button class="btn ghost" onclick="step()">Reset</button></p><div id="fb"></div></div>`;
+else h+=`<div class="q">${it.q}</div>`+it.ord.map(([t,i])=>`<button class="opt" data-i="${i}" onclick="ans(${i},this)">${t}</button>`).join("")+`<div id="fb"></div></div>`;
+$("app").innerHTML=h;const f=$("in");if(f)f.focus();if(k=="r")rr()}
+function pick(j,b){sel.push(items[I].ord[j]);b.disabled=true;$("slot").textContent=sel.join(" ")}
+function rr(){const it=items[I];let t="";for(let j=0;j<=ch&&j<it.n.length;j++){t+=`<b>${it.who}:</b> ${it.n[j]}<br>`;if(j<ch)t+=`<b>You:</b> ${it.b[j][0]}<br>`}
+$("tr").innerHTML=t;$("ro").innerHTML=ch<it.b.length?`<p class="hint">What would you say?</p>`+sh(it.b[ch].map((x,i)=>[x,i])).map(([x,i])=>`<button class="opt" onclick="rp(${i},this)">${x}</button>`).join(""):""}
+function rp(i,b){const it=items[I];document.querySelectorAll(".opt").forEach(x=>x.disabled=true);b.classList.add(i?"bad":"ok");if(i)cw++;else S.pts+=5;hud();
+$("fb").innerHTML=`<div class="fb ${i?"bad":"ok"}">${i?"❌ Better: <b>"+it.b[ch][0]+"</b>":"✅ Good reply!"} ${it.x[ch]}</div><p><button class="btn" onclick="rc()">Continue</button></p>`}
+function rc(){const it=items[I];ch++;$("fb").innerHTML="";rr();if(ch<it.b.length)return;const g=!cw;if(g){ok++;S.stk++;S.best=Math.max(S.best,S.stk)}else S.stk=0;hud();
+$("ro").innerHTML=`<div class="fb ${g?"ok":"bad"}">${g?"🎉 Perfect conversation!":"Nice try — "+cw+" reply to improve."} ${it.w}</div><p><button class="btn" onclick="nxt()">${I+1<items.length?"Next":"Finish"}</button></p>`}
+function res(g){const it=items[I],k=it.k||"c";if(g){ok++;S.stk++;S.best=Math.max(S.best,S.stk);S.pts+=(it.b?it.b.length*5:10)+(S.stk>=3?5:0)}else S.stk=0;hud();
+const rv=!g&&k=="f"?`<br>Answer: <b>${it.t[0]}</b>`:!g&&k=="d"?`<br>Answers: <b>${it.b.map(x=>x[0]).join(" · ")}</b>`:!g&&k=="o"?`<br>Answer: <b>${it.a}</b>`:"";
+$("fb").innerHTML=`<div class="fb ${g?"ok":"bad"}">${g?"✅ Great!"+(S.stk>=3?" 🔥 Streak bonus +5!":""):"❌ Not this time."} ${it.w}${rv}</div><p><button class="btn" onclick="nxt()">${I+1<items.length?"Next":"Finish"}</button></p>`}
+function ans(i,b){const it=items[I],g=i==it.a,all=[...document.querySelectorAll(".opt")];all.forEach(x=>x.disabled=true);
+(it.k=="s"||it.k=="t"?all[it.a]:all.find(x=>+x.dataset.i==it.a)).classList.add("ok");if(!g)b.classList.add("bad");res(g)}
+function chk(){const it=items[I];let g;if(it.k=="d"){const v=it.b.map((_,n)=>$("d"+n).value);if(v.includes(""))return;g=v.every(x=>x=="0");document.querySelectorAll(".sel").forEach((e,n)=>{e.disabled=true;e.style.borderColor=v[n]=="0"?"var(--ok)":"var(--bad)"})}else if(it.k=="f"){const v=nz($("in").value);if(!v)return;g=it.t.some(x=>nz(x)==v);$("in").disabled=true}else{if(!sel.length)return;g=nz(sel.join(" "))==nz(it.a);document.querySelectorAll(".wb").forEach(b=>b.disabled=true)}
+$("ck").disabled=true;res(g)}
+function spk(){S.pts+=15;ok++;nxt()}
+function nxt(){I++;I<items.length?step():fin()}
+function fin(){const r=ok/items.length,n=r>=.85?3:r>=.6?2:r>=.3?1:0;S.stars[M.id]=Math.max(S.stars[M.id]||0,n);hud();
+$("app").innerHTML=`<div class="card center"><div style="font-size:3rem">${n==3?"🏆":n?"👏":"💪"}</div><h2>${M.name} complete!</h2><div style="font-size:2rem">${"★".repeat(n)+"☆".repeat(3-n)}</div><p>${ok} / ${items.length} correct · Total: <b>${S.pts}</b> points</p><button class="btn" onclick="play('${M.id}')">Play again</button> <button class="btn ghost" onclick="show('map')">Back to missions</button></div>`}
+function done(){const t=S.pts,lv=t>=750?["🏆","Grammar Champion"]:t>=450?["🥈","Tense Master"]:["🥉","Tense Explorer"];
+$("app").innerHTML=`<div class="card center"><div style="font-size:4rem">${lv[0]}</div><h1>${lv[1]}</h1><p>You finished all missions with <b>${t}</b> points.<br>Best streak: <b>${S.best}</b> 🔥</p><p class="hint">Challenge: can you beat your score?</p><button class="btn" onclick="show('map')">Keep playing</button></div>`}
+theory();
+</script>
+</body>
+</html>
